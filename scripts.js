@@ -1,5 +1,5 @@
 function checkAnswer() {
-    const correctAnswer = "Pizzeria Roma"; // Zmień na odpowiednią odpowiedź
+    const correctAnswer = "Pizzeria Roma"; // Prawidłowa odpowiedź
     const userAnswer = document.getElementById("answer").value.trim();
 
     if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
