@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gra Walentynkowa</title>
+    <title>Serce i zagadka</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
@@ -16,6 +16,12 @@
             <p><strong>Pytanie:</strong> Gdzie po raz pierwszy razem jedliśmy kolację?</p>
             <input type="text" id="answer" placeholder="Wpisz odpowiedź">
             <button onclick="checkAnswer()">Sprawdź</button>
+        </div>
+
+        <div id="puzzle2" style="display: none;">
+            <p><strong>Co kryje się za sercem?</strong> Jakie trzy rzeczy kojarzą się z miłością i Walentynkami? (Podaj je w jednej odpowiedzi)</p>
+            <input type="text" id="answer2" placeholder="Wpisz odpowiedź">
+            <button onclick="checkAnswer2()">Sprawdź</button>
         </div>
 
         <div id="surprise" style="display: none;">
@@ -40,8 +46,29 @@
 
             // Sprawdzanie odpowiedzi
             if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-                // Ukrywanie zagadki, wyświetlanie niespodzianki
+                // Ukrywanie zagadki, wyświetlanie drugiej zagadki
                 document.getElementById("puzzle").style.display = "none";
+                document.getElementById("puzzle2").style.display = "block";
+            } else {
+                // Informacja o błędnej odpowiedzi
+                alert("Nie, spróbuj jeszcze raz!");
+            }
+        }
+
+        function checkAnswer2() {
+            console.log("Sprawdzanie drugiej odpowiedzi...");
+            const correctAnswer2 = "serce, róża, czekolada"; // Prawidłowa odpowiedź (można to zmienić)
+            const userAnswer2 = document.getElementById("answer2").value.trim(); // Odpowiedź użytkownika
+
+            if (userAnswer2 === "") {
+                alert("Proszę, wpisz odpowiedź!");
+                return;
+            }
+
+            // Sprawdzanie odpowiedzi
+            if (userAnswer2.toLowerCase() === correctAnswer2.toLowerCase()) {
+                // Ukrywanie drugiej zagadki, wyświetlanie niespodzianki
+                document.getElementById("puzzle2").style.display = "none";
                 document.getElementById("surprise").style.display = "block";
             } else {
                 // Informacja o błędnej odpowiedzi
