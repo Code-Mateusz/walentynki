@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serce i zagadka</title>
+    <title>Gra Walentynkowa</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
@@ -27,5 +27,27 @@
             </div>
         </div>
     </div>
+    <script>
+        function checkAnswer() {
+            console.log("Sprawdzanie odpowiedzi...");
+            const correctAnswer = "Pizzeria Roma"; // Prawidłowa odpowiedź
+            const userAnswer = document.getElementById("answer").value.trim(); // Odpowiedź użytkownika
+
+            if (userAnswer === "") {
+                alert("Proszę, wpisz odpowiedź!");
+                return;
+            }
+
+            // Sprawdzanie odpowiedzi
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                // Ukrywanie zagadki, wyświetlanie niespodzianki
+                document.getElementById("puzzle").style.display = "none";
+                document.getElementById("surprise").style.display = "block";
+            } else {
+                // Informacja o błędnej odpowiedzi
+                alert("Nie, spróbuj jeszcze raz!");
+            }
+        }
+    </script>
 </body>
 </html>
