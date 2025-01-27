@@ -3,77 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serce i zagadka</title>
+    <title>Gra Walentynkowa</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>Wyzwanie Logiczne</h1>
-        <p>Aby kontynuować, odpowiedz na pytanie:</p>
+        <p>Aby kontynuować, odpowiedz na dwie zagadki:</p>
 
-        <div id="puzzle">
-            <p><strong>Pytanie:</strong> Gdzie po raz pierwszy razem jedliśmy kolację?</p>
-            <input type="text" id="answer" placeholder="Wpisz odpowiedź">
-            <button onclick="checkAnswer()">Sprawdź</button>
-        </div>
-
-        <div id="puzzle2" style="display: none;">
-            <p><strong>Co kryje się za sercem?</strong> Jakie trzy rzeczy kojarzą się z miłością i Walentynkami? (Podaj je w jednej odpowiedzi)</p>
+        <!-- Zagadki -->
+        <div id="puzzle2">
+            <p><strong>Pytanie 1:</strong> Jakiej kategorii był nasz pierwszy obejrzany razem film?</p>
             <input type="text" id="answer2" placeholder="Wpisz odpowiedź">
-            <button onclick="checkAnswer2()">Sprawdź</button>
+            <button onclick="checkAnswer2()">Sprawdź odpowiedź 1</button>
+            <p class="hint" id="hint2" style="display: none;">Wskazówka: To gatunek filmowy, który kojarzy się z miłością, romantyzmem i uczuciem.</p>
         </div>
 
+        <div id="puzzle1" style="display: none;">
+            <p><strong>Pytanie 2:</strong> Jakie trzy rzeczy kojarzą się z miłością i Walentynkami? (Podaj je w jednej odpowiedzi)</p>
+            <input type="text" id="answer1" placeholder="Wpisz odpowiedź">
+            <button onclick="checkAnswer1()">Sprawdź odpowiedź 2</button>
+            
+            <div id="hints1" style="display: none;">
+                <p><strong>Wskazówki:</strong></p>
+                <ul>
+                    <li><button onclick="showHint('serce')">Wskazówka dla pierwszego słowa</button></li>
+                    <li><button onclick="showHint('czekoladki')">Wskazówka dla drugiego słowa</button></li>
+                    <li><button onclick="showHint('kwiaty')">Wskazówka dla trzeciego słowa</button></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sekcja z niespodzianką -->
         <div id="surprise" style="display: none;">
             <h2>🎉 Gratulacje! 🎉</h2>
-            <p>Udało Ci się odgadnąć! Mam dla Ciebie niespodziankę...</p>
+            <p>Udało Ci się odgadnąć obie odpowiedzi! Mam dla Ciebie niespodziankę...</p>
             <div class="invitation">
                 <h3>Zapraszam Cię na wyjątkowy wieczór 💖</h3>
                 <p>Spotkajmy się 14 lutego o 19:00 w naszej ulubionej restauracji. Nie mogę się doczekać! 🥂</p>
             </div>
         </div>
     </div>
+
     <script>
-        function checkAnswer() {
-            console.log("Sprawdzanie odpowiedzi...");
-            const correctAnswer = "Pizzeria Roma"; // Prawidłowa odpowiedź
-            const userAnswer = document.getElementById("answer").value.trim(); // Odpowiedź użytkownika
-
-            if (userAnswer === "") {
-                alert("Proszę, wpisz odpowiedź!");
-                return;
-            }
-
-            // Sprawdzanie odpowiedzi
-            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-                // Ukrywanie zagadki, wyświetlanie drugiej zagadki
-                document.getElementById("puzzle").style.display = "none";
-                document.getElementById("puzzle2").style.display = "block";
-            } else {
-                // Informacja o błędnej odpowiedzi
-                alert("Nie, spróbuj jeszcze raz!");
-            }
-        }
-
+        // Funkcja sprawdzająca drugą odpowiedź
         function checkAnswer2() {
-            console.log("Sprawdzanie drugiej odpowiedzi...");
-            const correctAnswer2 = "serce, róża, czekolada"; // Prawidłowa odpowiedź (można to zmienić)
-            const userAnswer2 = document.getElementById("answer2").value.trim(); // Odpowiedź użytkownika
+            const correctAnswer2 = "romantyzm"; // Prawidłowa odpowiedź 2
+            const userAnswer2 = document.getElementById("answer2").value.trim().toLowerCase();
 
             if (userAnswer2 === "") {
                 alert("Proszę, wpisz odpowiedź!");
                 return;
             }
 
-            // Sprawdzanie odpowiedzi
-            if (userAnswer2.toLowerCase() === correctAnswer2.toLowerCase()) {
-                // Ukrywanie drugiej zagadki, wyświetlanie niespodzianki
+            // Sprawdzanie odpowiedzi 2
+            if (userAnswer2 === correctAnswer2.toLowerCase()) {
                 document.getElementById("puzzle2").style.display = "none";
+                document.getElementById("puzzle1").style.display = "block";
+            } else {
+                alert("Nie, spróbuj jeszcze raz!");
+                document.getElementById("hint2").style.display = "block"; // Pokaż wskazówkę
+            }
+        }
+
+        // Funkcja sprawdzająca pierwszą odpowiedź
+        function checkAnswer1() {
+            const correctAnswer1 = "serce, czekoladki, kwiaty"; // Prawidłowa odpowiedź 1
+            const userAnswer1 = document.getElementById("answer1").value.trim().toLowerCase();
+
+            if (userAnswer1 === "") {
+                alert("Proszę, wpisz odpowiedź!");
+                return;
+            }
+
+            // Sprawdzanie odpowiedzi 1
+            if (userAnswer1 === correctAnswer1.toLowerCase()) {
+                document.getElementById("puzzle1").style.display = "none";
                 document.getElementById("surprise").style.display = "block";
             } else {
-                // Informacja o błędnej odpowiedzi
                 alert("Nie, spróbuj jeszcze raz!");
+                document.getElementById("hints1").style.display = "block"; // Pokaż wskazówki
             }
+        }
+
+        // Funkcja wyświetlająca wskazówki
+        function showHint(word) {
+            let hintText;
+            if (word === "serce") {
+                hintText = "To symbol miłości, często w kształcie figury geometrycznej.";
+            } else if (word === "czekoladki") {
+                hintText = "Słodka przyjemność, która zyskuje szczególną popularność w Walentynki.";
+            } else if (word === "kwiaty") {
+                hintText = "Są symbolem piękna i często ofiarowywane ukochanej osobie.";
+            }
+            alert(hintText);
         }
     </script>
 </body>
