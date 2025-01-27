@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gra Walentynkowa</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Wyzwanie Logiczne</h1>
+        <p>Aby kontynuować, odpowiedz na pytanie:</p>
+
+        <div id="puzzle">
+            <p><strong>Pytanie:</strong> Gdzie po raz pierwszy razem jedliśmy kolację?</p>
+            <input type="text" id="answer" placeholder="Wpisz odpowiedź">
+            <button onclick="checkAnswer()">Sprawdź</button>
+        </div>
+
+        <div id="surprise" style="display: none;">
+            <h2>🎉 Gratulacje! 🎉</h2>
+            <p>Udało Ci się odgadnąć! Mam dla Ciebie niespodziankę...</p>
+            <div class="invitation">
+                <h3>Zapraszam Cię na wyjątkowy wieczór 💖</h3>
+                <p>Spotkajmy się 14 lutego o 19:00 w naszej ulubionej restauracji. Nie mogę się doczekać! 🥂</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
