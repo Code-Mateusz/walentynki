@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gra Walentynkowa</title>
+    <title>Serce i Zagadka</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
@@ -17,7 +17,6 @@
             <p><strong>Pytanie 1:</strong> Jakiej kategorii był nasz pierwszy obejrzany razem film?</p>
             <input type="text" id="answer2" placeholder="Wpisz odpowiedź">
             <button onclick="checkAnswer2()">Sprawdź odpowiedź 1</button>
-            <p class="hint" id="hint2" style="display: none;">Wskazówka: To gatunek filmowy, który kojarzy się z miłością, romantyzmem i uczuciem.</p>
         </div>
 
         <div id="puzzle1" style="display: none;">
@@ -49,7 +48,7 @@
     <script>
         // Funkcja sprawdzająca drugą odpowiedź
         function checkAnswer2() {
-            const correctAnswer2 = "romantyzm"; // Prawidłowa odpowiedź 2
+            const correctAnswer2 = "horror"; // Prawidłowa odpowiedź 2
             const userAnswer2 = document.getElementById("answer2").value.trim().toLowerCase();
 
             if (userAnswer2 === "") {
